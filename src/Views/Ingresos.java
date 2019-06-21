@@ -157,7 +157,8 @@ public class Ingresos extends javax.swing.JFrame {
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        window.setVisible(true);
+        Movimientos movimientos = new Movimientos(this);
+        movimientos.setVisible(true);
     }//GEN-LAST:event_CancelActionPerformed
 
     private void OpcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionActionPerformed
