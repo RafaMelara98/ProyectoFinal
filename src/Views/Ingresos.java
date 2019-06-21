@@ -5,17 +5,31 @@
  */
 package Views;
 
-/**
- *
- * @author Van
- */
+import ENTIDADES.Usuario;
+import DATABASE.User;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+
 public class Ingresos extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Ingresos
-     */
-    public Ingresos() {
+     JFrame window;
+     
+    public Ingresos(JFrame window) {
         initComponents();
+        this.window = window;
     }
 
     /**
@@ -160,7 +174,6 @@ public class Ingresos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Ingresos().setVisible(true);
             }
         });
     }

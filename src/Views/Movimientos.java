@@ -152,7 +152,8 @@ public class Movimientos extends javax.swing.JFrame {
     private void IngresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresosActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        
+        Ingresos ingresos = new Ingresos(this);
+        ingresos.setVisible(true);
     }//GEN-LAST:event_IngresosActionPerformed
 
 
