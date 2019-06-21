@@ -61,6 +61,8 @@ public class Movimientos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbUsers = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        Ingresos = new javax.swing.JButton();
+        Egresos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,12 +89,25 @@ public class Movimientos extends javax.swing.JFrame {
             }
         });
 
+        Ingresos.setText("Ingresos");
+        Ingresos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IngresosActionPerformed(evt);
+            }
+        });
+
+        Egresos.setText("Egresos");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Egresos)
+                .addGap(18, 18, 18)
+                .addComponent(Ingresos)
+                .addGap(79, 79, 79)
                 .addComponent(jButton1)
                 .addGap(40, 40, 40))
             .addGroup(layout.createSequentialGroup()
@@ -118,7 +133,10 @@ public class Movimientos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
                 .addGap(32, 32, 32)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(Ingresos)
+                    .addComponent(Egresos))
                 .addContainerGap())
         );
 
@@ -131,8 +149,14 @@ public class Movimientos extends javax.swing.JFrame {
         this.window.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void IngresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IngresosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Egresos;
+    private javax.swing.JButton Ingresos;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
