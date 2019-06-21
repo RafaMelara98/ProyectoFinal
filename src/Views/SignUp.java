@@ -157,7 +157,7 @@ public class SignUp extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Fields can not be empty","Alert",JOptionPane.WARNING_MESSAGE);
         }else{
             try{
-                if(userDao.signUp(txtPassword.getText(),new String(txtPassword.getText()))){
+                if(userDao.signUp(txtName.getText(),new String(txtPassword.getText()))){
                     JOptionPane.showMessageDialog(this,"User created successfully","Success",JOptionPane.INFORMATION_MESSAGE);
                 }else{
                     JOptionPane.showMessageDialog(this,"Something is wrong please try again","Error",JOptionPane.ERROR_MESSAGE);
