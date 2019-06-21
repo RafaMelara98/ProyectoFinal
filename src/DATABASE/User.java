@@ -72,7 +72,7 @@ public class User {
         }
         return isSuccess;
     }
-  
+    
     /*public List<Usuario> getAllMovimientos(){
         Connection conn = bd.getConnection();
         List<Usuario> users = new ArrayList();

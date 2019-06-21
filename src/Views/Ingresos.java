@@ -25,10 +25,12 @@ import javax.swing.table.DefaultTableModel;
 
 public class Ingresos extends javax.swing.JFrame {
 
-     JFrame window;
+    User userDao;
+    JFrame window;
      
     public Ingresos() {
         initComponents();
+        userDao = new User();
     }
 
     /**
@@ -42,14 +44,14 @@ public class Ingresos extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtDinero = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtCuenta = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         Cancel = new javax.swing.JButton();
         Save = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
+        txtCategoria = new javax.swing.JTextField();
         Opcion = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
@@ -73,10 +75,15 @@ public class Ingresos extends javax.swing.JFrame {
         });
 
         Save.setText("Guardar");
-
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        Save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                SaveActionPerformed(evt);
+            }
+        });
+
+        txtCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCategoriaActionPerformed(evt);
             }
         });
 
@@ -103,9 +110,9 @@ public class Ingresos extends javax.swing.JFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField4)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))
+                            .addComponent(txtCuenta)
+                            .addComponent(txtDinero)
+                            .addComponent(txtCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Opcion, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -127,16 +134,16 @@ public class Ingresos extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1)
+                    .addComponent(txtDinero)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
-                    .addComponent(jTextField2)
+                    .addComponent(txtCategoria)
                     .addComponent(Opcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4)
+                    .addComponent(txtCuenta)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(65, 65, 65)
@@ -176,10 +183,29 @@ public class Ingresos extends javax.swing.JFrame {
         categorias.setVisible(true);
     }//GEN-LAST:event_OpcionActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCategoriaActionPerformed
         // TODO add your handling code here:
         Categorias categorias = new Categorias(this);
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtCategoriaActionPerformed
+
+    private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
+        // TODO add your handling code here:
+        /*
+        if(txtDinero.getText().isEmpty() || txtCategoria.getText().isEmpty() ||txtCuenta.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Fields can not be empty","Alert",JOptionPane.WARNING_MESSAGE);
+        }else{
+            try{
+                if(userDao.(txtDinero.getText(), txtCategoria.getText(), txtCuenta.getText()))){
+                    JOptionPane.showMessageDialog(this,"User created successfully","Success",JOptionPane.INFORMATION_MESSAGE);
+                }else{
+                    JOptionPane.showMessageDialog(this,"Something is wrong please try again","Error",JOptionPane.ERROR_MESSAGE);
+                }
+            }catch(SQLException ex){
+                ex.printStackTrace();
+            }
+        }
+         */
+    }//GEN-LAST:event_SaveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -225,8 +251,8 @@ public class Ingresos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    public static javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
+    public static javax.swing.JTextField txtCategoria;
+    private javax.swing.JTextField txtCuenta;
+    private javax.swing.JTextField txtDinero;
     // End of variables declaration//GEN-END:variables
 }

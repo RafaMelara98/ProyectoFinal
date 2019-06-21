@@ -147,7 +147,7 @@ public class Categorias extends javax.swing.JFrame {
        Ingresos ingresos = new Ingresos();
        ingresos.setVisible(true);
        String info = jTextField1.getText();
-       Ingresos.jTextField2.setText(info);
+       Ingresos.txtCategoria.setText(info);
        dispose();
        
        //setVisible(false);
