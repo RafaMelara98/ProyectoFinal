@@ -7,7 +7,10 @@ package Views;
 
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-
+import ENTIDADES.Usuario;
+import DATABASE.User;
+import java.awt.event.ActionEvent;
+import java.sql.SQLException;
 /**
  *
  * @author Van
@@ -38,12 +41,13 @@ public class Categorias extends javax.swing.JFrame {
         jcomboCategorias = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         btnSelect = new javax.swing.JToggleButton();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("CATEGORIAS");
 
-        jcomboCategorias.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcomboCategorias.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Apoyos de gobierno", "Arrendamientos", "Becas", "Pensión", "Préstamos", "Sueldo" }));
         jcomboCategorias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcomboCategoriasActionPerformed(evt);
@@ -59,22 +63,31 @@ public class Categorias extends javax.swing.JFrame {
             }
         });
 
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
+                        .addGap(146, 146, 146)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jcomboCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -87,7 +100,9 @@ public class Categorias extends javax.swing.JFrame {
                     .addComponent(jcomboCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSelect))
-                .addContainerGap(298, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(233, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -108,16 +123,29 @@ public class Categorias extends javax.swing.JFrame {
 
     private void jcomboCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboCategoriasActionPerformed
         // TODO add your handling code here:
-        String[] categorias = new String[] {"Sueldo", "Apoyo de gobierno", "Arrendamientos", "Becas", "Otros", "Pension", "Prestamos"};
- 
-        JComboBox<String> comboCategorias = new JComboBox<String>(categorias);
-        
+      
     }//GEN-LAST:event_jcomboCategoriasActionPerformed
 
     private void btnSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectActionPerformed
         // TODO add your handling code here:
-      
+       if(jcomboCategorias.getSelectedItem().equals("Apoyos de gobierno")){
+           jTextField1.setText("Apoyos de gobierno");
+       }else if(jcomboCategorias.getSelectedItem().equals("Arrendamientos")){
+           jTextField1.setText("Arrendamientos");
+       }else if(jcomboCategorias.getSelectedItem().equals("Becas")){
+           jTextField1.setText("Becas");
+       }else if(jcomboCategorias.getSelectedItem().equals("Pensión")){
+           jTextField1.setText("Pensión");
+       }else if(jcomboCategorias.getSelectedItem().equals("Prestamos")){
+           jTextField1.setText("Prestamos");
+       }else if(jcomboCategorias.getSelectedItem().equals("Sueldo")){
+           jTextField1.setText("Sueldo");
+       }
     }//GEN-LAST:event_btnSelectActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,6 +186,7 @@ public class Categorias extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JComboBox jcomboCategorias;
     // End of variables declaration//GEN-END:variables
 }
