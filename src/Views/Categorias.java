@@ -27,6 +27,7 @@ public class Categorias extends javax.swing.JFrame {
         this.window = window;
     }
 
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -128,6 +129,7 @@ public class Categorias extends javax.swing.JFrame {
 
     private void btnSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectActionPerformed
         // TODO add your handling code here:
+        
        if(jcomboCategorias.getSelectedItem().equals("Apoyos de gobierno")){
            jTextField1.setText("Apoyos de gobierno");
        }else if(jcomboCategorias.getSelectedItem().equals("Arrendamientos")){
@@ -136,11 +138,23 @@ public class Categorias extends javax.swing.JFrame {
            jTextField1.setText("Becas");
        }else if(jcomboCategorias.getSelectedItem().equals("Pensión")){
            jTextField1.setText("Pensión");
-       }else if(jcomboCategorias.getSelectedItem().equals("Prestamos")){
-           jTextField1.setText("Prestamos");
+       }else if(jcomboCategorias.getSelectedItem().equals("Préstamos")){
+           jTextField1.setText("Préstamos");
        }else if(jcomboCategorias.getSelectedItem().equals("Sueldo")){
            jTextField1.setText("Sueldo");
        }
+       
+       Ingresos ingresos = new Ingresos();
+       ingresos.setVisible(true);
+       String info = jTextField1.getText();
+       Ingresos.jTextField2.setText(info);
+       dispose();
+       
+       //setVisible(false);
+       //window.setVisible(true);
+       
+       
+       
     }//GEN-LAST:event_btnSelectActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
