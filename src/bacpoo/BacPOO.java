@@ -5,6 +5,8 @@
  */
 package bacpoo;
 
+import Views.Login;
+
 /**
  *
  * @author Rafael Melara
@@ -16,6 +18,10 @@ public class BacPOO {
      */
     public static void main(String[] args) {
         System.out.println("Hola");
+        
+        
+        Login login = new Login();
+        login.setVisible(true);
         //ALV ESTA COSA NO DEJA SUBIR SI EL ADMIN MODIFICA A CADA RATO :V
         //PTO EL QUE LO BORRE
     }
