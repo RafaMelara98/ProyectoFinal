@@ -97,6 +97,11 @@ public class Movimientos extends javax.swing.JFrame {
         });
 
         Egresos.setText("Egresos");
+        Egresos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EgresosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,6 +160,13 @@ public class Movimientos extends javax.swing.JFrame {
         Ingresos ingresos = new Ingresos();
         ingresos.setVisible(true);
     }//GEN-LAST:event_IngresosActionPerformed
+
+    private void EgresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EgresosActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        Egresos egresos = new Egresos();
+        egresos.setVisible(true);
+    }//GEN-LAST:event_EgresosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

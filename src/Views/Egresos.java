@@ -23,12 +23,12 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 
-public class Ingresos extends javax.swing.JFrame {
+public class Egresos extends javax.swing.JFrame {
 
     User userDao;
     JFrame window;
      
-    public Ingresos() {
+    public Egresos() {
         initComponents();
         userDao = new User();
     }
@@ -59,7 +59,7 @@ public class Ingresos extends javax.swing.JFrame {
 
         jPanel1.setVerifyInputWhenFocusTarget(false);
 
-        jLabel1.setText("NUEVO INGRESO");
+        jLabel1.setText("NUEVO EGRESO");
 
         jLabel2.setText("Dinero:");
 
@@ -179,13 +179,13 @@ public class Ingresos extends javax.swing.JFrame {
     private void OpcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        CategoriasIngreso categorias = new CategoriasIngreso(this);
+        CategoriasEgreso categorias = new CategoriasEgreso(this);
         categorias.setVisible(true);
     }//GEN-LAST:event_OpcionActionPerformed
 
     private void txtCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCategoriaActionPerformed
         // TODO add your handling code here:
-        CategoriasIngreso categorias = new CategoriasIngreso(this);
+        CategoriasEgreso categorias = new CategoriasEgreso(this);
     }//GEN-LAST:event_txtCategoriaActionPerformed
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
@@ -224,14 +224,15 @@ public class Ingresos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ingresos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Egresos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ingresos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Egresos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ingresos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Egresos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ingresos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Egresos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
