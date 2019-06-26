@@ -10,7 +10,9 @@ import javax.swing.JFrame;
 import ENTIDADES.Usuario;
 import DATABASE.User;
 import java.awt.event.ActionEvent;
+import java.awt.event.ItemEvent;
 import java.sql.SQLException;
+import javax.swing.DefaultComboBoxModel;
 /**
  *
  * @author Van
@@ -26,8 +28,43 @@ public class Categorias extends javax.swing.JFrame {
         initComponents();
         this.window = window;
     }
-
-
+    
+    
+    public String[] infos(String infos){
+        String[] dato = new String[6];
+        if(infos.equals("Apoyos de gobierno")){
+            dato[0] = "A";
+            dato[1] = "B";
+            dato[2] = "C";
+        }
+        if(infos.equals("Arrendamientos")){
+            dato[0] = "1";
+            dato[1] = "2";
+            dato[2] = "3";
+        }
+        if(infos.equals("Becas")){
+            dato[0] = "X";
+            dato[1] = "Y";
+            dato[2] = "Z";
+        }
+        if(infos.equals("Pensión")){
+            dato[0] = "C";
+            dato[1] = "V";
+            dato[2] = "X";
+        }
+        if(infos.equals("Préstamos")){
+            dato[0] = "4";
+            dato[1] = "5";
+            dato[2] = "6";
+        }
+        if(infos.equals("Sueldo")){
+            dato[0] = "X";
+            dato[1] = "XX";
+            dato[2] = "XXX";
+        }
+        return dato;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,18 +74,25 @@ public class Categorias extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanelCategoria = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jcomboCategorias = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
-        btnSelect = new javax.swing.JToggleButton();
-        jTextField1 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jcomboSubCategorias = new javax.swing.JComboBox<>();
+        jTextField2 = new javax.swing.JTextField();
+        btnSelect2 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("CATEGORIAS");
 
         jcomboCategorias.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Apoyos de gobierno", "Arrendamientos", "Becas", "Pensión", "Préstamos", "Sueldo" }));
+        jcomboCategorias.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcomboCategoriasItemStateChanged(evt);
+            }
+        });
         jcomboCategorias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcomboCategoriasActionPerformed(evt);
@@ -57,66 +101,86 @@ public class Categorias extends javax.swing.JFrame {
 
         jLabel2.setText("Categoria:");
 
-        btnSelect.setText("Seleccionar");
-        btnSelect.addActionListener(new java.awt.event.ActionListener() {
+        jLabel3.setText("Subcategoría:");
+
+        jcomboSubCategorias.setToolTipText("");
+        jcomboSubCategorias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSelectActionPerformed(evt);
+                jcomboSubCategoriasActionPerformed(evt);
             }
         });
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextField2ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcomboCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        btnSelect2.setText("Seleccionar");
+        btnSelect2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelect2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelCategoriaLayout = new javax.swing.GroupLayout(jPanelCategoria);
+        jPanelCategoria.setLayout(jPanelCategoriaLayout);
+        jPanelCategoriaLayout.setHorizontalGroup(
+            jPanelCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCategoriaLayout.createSequentialGroup()
+                .addGroup(jPanelCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelCategoriaLayout.createSequentialGroup()
                         .addGap(159, 159, 159)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelCategoriaLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanelCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jcomboCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelCategoriaLayout.createSequentialGroup()
+                                .addComponent(jcomboSubCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnSelect2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanelCategoriaLayout.createSequentialGroup()
+                        .addGap(114, 114, 114)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanelCategoriaLayout.setVerticalGroup(
+            jPanelCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCategoriaLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelCategoriaLayout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jcomboCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(65, 65, 65)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanelCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jcomboSubCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSelect2)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jcomboCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSelect))
-                .addGap(37, 37, 37)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(233, Short.MAX_VALUE))
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(172, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanelCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 1, Short.MAX_VALUE))
         );
 
         pack();
@@ -124,83 +188,63 @@ public class Categorias extends javax.swing.JFrame {
 
     private void jcomboCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboCategoriasActionPerformed
         // TODO add your handling code here:
-      JComboBox categorias = new JComboBox();
     }//GEN-LAST:event_jcomboCategoriasActionPerformed
 
-    private void btnSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectActionPerformed
+    private void jcomboSubCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboSubCategoriasActionPerformed
         // TODO add your handling code here:
         
-       if(jcomboCategorias.getSelectedItem().equals("Apoyos de gobierno")){
-           jTextField1.setText("Apoyos de gobierno");
-       }else if(jcomboCategorias.getSelectedItem().equals("Arrendamientos")){
-           jTextField1.setText("Arrendamientos");
-       }else if(jcomboCategorias.getSelectedItem().equals("Becas")){
-           jTextField1.setText("Becas");
-       }else if(jcomboCategorias.getSelectedItem().equals("Pensión")){
-           jTextField1.setText("Pensión");
-       }else if(jcomboCategorias.getSelectedItem().equals("Préstamos")){
-           jTextField1.setText("Préstamos");
-       }else if(jcomboCategorias.getSelectedItem().equals("Sueldo")){
-           jTextField1.setText("Sueldo");
-       }
+       
+    }//GEN-LAST:event_jcomboSubCategoriasActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void btnSelect2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelect2ActionPerformed
+        // TODO add your handling code here:
+        /*
+        if(jcomboCategorias.getSelectedItem().equals("Apoyos de gobierno")){
+            if(jcomboSubCategorias.getSelectedItem().equals("A"))
+           jTextField2.setText("A");
+           else
+           if(jcomboSubCategorias.getSelectedItem().equals("B"))
+           jTextField2.setText("B");
+           else
+           if(jcomboSubCategorias.getSelectedItem().equals("C"))
+           jTextField2.setText("C");
+            
+           }
+        */
        
        Ingresos ingresos = new Ingresos();
        ingresos.setVisible(true);
-       String info = jTextField1.getText();
-       Ingresos.txtCategoria.setText(info);
+       String infos = jTextField2.getText();
+       Ingresos.txtCategoria.setText(infos);
        dispose();
-       
-       //setVisible(false);
-       //window.setVisible(true);
-       
-       
-       
-    }//GEN-LAST:event_btnSelectActionPerformed
+    }//GEN-LAST:event_btnSelect2ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jcomboCategoriasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcomboCategoriasItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+        if(evt.getStateChange() == ItemEvent.SELECTED){
+            if(this.jcomboCategorias.getSelectedIndex()>=0){
+                this.jcomboSubCategorias.setModel(new DefaultComboBoxModel(infos(this.jcomboCategorias.getSelectedItem().toString())));
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Categorias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Categorias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Categorias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Categorias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+      
+    }//GEN-LAST:event_jcomboCategoriasItemStateChanged
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnSelect;
+    private javax.swing.JToggleButton btnSelect2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanelCategoria;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JComboBox jcomboCategorias;
+    private javax.swing.JComboBox<String> jcomboSubCategorias;
     // End of variables declaration//GEN-END:variables
+
+
 }
