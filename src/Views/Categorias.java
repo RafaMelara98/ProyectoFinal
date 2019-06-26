@@ -33,34 +33,34 @@ public class Categorias extends javax.swing.JFrame {
     public String[] infos(String infos){
         String[] dato = new String[6];
         if(infos.equals("Apoyos de gobierno")){
-            dato[0] = "A";
-            dato[1] = "B";
-            dato[2] = "C";
+            dato[0] = "Agua";
+            dato[1] = "Energía";
+            dato[2] = "Seguridad";
         }
         if(infos.equals("Arrendamientos")){
-            dato[0] = "1";
-            dato[1] = "2";
-            dato[2] = "3";
+            dato[0] = "Carro";
+            dato[1] = "Computadora";
+            dato[2] = "Casa";
         }
         if(infos.equals("Becas")){
-            dato[0] = "X";
-            dato[1] = "Y";
-            dato[2] = "Z";
+            dato[0] = "Post-Grado";
+            dato[1] = "Pre-Grado";
+            dato[2] = "Maestría";
         }
         if(infos.equals("Pensión")){
-            dato[0] = "C";
-            dato[1] = "V";
-            dato[2] = "X";
+            dato[0] = "Casa San Benito";
+            dato[1] = "Hostal Café San Andres";
+            dato[2] = "Hostal Doña Marta";
         }
         if(infos.equals("Préstamos")){
-            dato[0] = "4";
-            dato[1] = "5";
-            dato[2] = "6";
+            dato[0] = "Banco BAC Credomatic";
+            dato[1] = "Banco Cuscatlán";
+            dato[2] = "Banco Davivienda";
         }
         if(infos.equals("Sueldo")){
-            dato[0] = "X";
-            dato[1] = "XX";
-            dato[2] = "XXX";
+            dato[0] = "Bonos";
+            dato[1] = "Aguinaldo";
+            dato[2] = "Salario";
         }
         return dato;
     }
@@ -87,7 +87,7 @@ public class Categorias extends javax.swing.JFrame {
 
         jLabel1.setText("CATEGORIAS");
 
-        jcomboCategorias.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Apoyos de gobierno", "Arrendamientos", "Becas", "Pensión", "Préstamos", "Sueldo" }));
+        jcomboCategorias.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Apoyos de gobierno", "Arrendamientos", "Becas", "Pensión", "Préstamos", "Sueldo" }));
         jcomboCategorias.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jcomboCategoriasItemStateChanged(evt);
@@ -203,24 +203,57 @@ public class Categorias extends javax.swing.JFrame {
 
     private void btnSelect2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelect2ActionPerformed
         // TODO add your handling code here:
-        /*
-        if(jcomboCategorias.getSelectedItem().equals("Apoyos de gobierno")){
-            if(jcomboSubCategorias.getSelectedItem().equals("A"))
-           jTextField2.setText("A");
-           else
-           if(jcomboSubCategorias.getSelectedItem().equals("B"))
-           jTextField2.setText("B");
-           else
-           if(jcomboSubCategorias.getSelectedItem().equals("C"))
-           jTextField2.setText("C");
-            
-           }
-        */
+        
+
+            if(jcomboSubCategorias.getSelectedItem().equals("Agua")){
+            jTextField2.setText("Agua");}
+            else if(jcomboSubCategorias.getSelectedItem().equals("Energía"))
+            jTextField2.setText("Energía");
+            else if(jcomboSubCategorias.getSelectedItem().equals("Seguridad"))
+            jTextField2.setText("Seguridad");
        
+            if(jcomboSubCategorias.getSelectedItem().equals("Carro")){
+            jTextField2.setText("Carro");}
+            else if(jcomboSubCategorias.getSelectedItem().equals("Computadora"))
+            jTextField2.setText("Computadora");
+            else if(jcomboSubCategorias.getSelectedItem().equals("Casa"))
+            jTextField2.setText("Casa");
+           
+            if(jcomboSubCategorias.getSelectedItem().equals("Post-Grado")){
+            jTextField2.setText("Post-Grado");}
+            else if(jcomboSubCategorias.getSelectedItem().equals("Pre-Grado"))
+            jTextField2.setText("Pre-Grado");
+            else if(jcomboSubCategorias.getSelectedItem().equals("Maestría"))
+            jTextField2.setText("Maestría");
+  
+            if(jcomboSubCategorias.getSelectedItem().equals("Casa San Benito")){
+            jTextField2.setText("Casa San Benito");}
+            else if(jcomboSubCategorias.getSelectedItem().equals("Hostal Café San Andres"))
+            jTextField2.setText("Hostal Café San Andres");
+            else if(jcomboSubCategorias.getSelectedItem().equals("Hostal Doña Marta"))
+            jTextField2.setText("Hostal Doña Marta");
+            
+            if(jcomboSubCategorias.getSelectedItem().equals("Banco BAC Credomatic")){
+            jTextField2.setText("Banco BAC Credomatic");}
+            else if(jcomboSubCategorias.getSelectedItem().equals("Banco Cuscatlán"))
+            jTextField2.setText("Banco Cuscatlán");
+            else if(jcomboSubCategorias.getSelectedItem().equals("Banco Davivienda"))
+            jTextField2.setText("Banco Davivienda");
+            
+            if(jcomboSubCategorias.getSelectedItem().equals("Bonos")){
+            jTextField2.setText("Bonos");}
+            else if(jcomboSubCategorias.getSelectedItem().equals("Aguinaldo"))
+            jTextField2.setText("Aguinaldo");
+            else if(jcomboSubCategorias.getSelectedItem().equals("Salario"))
+            jTextField2.setText("Salario");
+         
+        
+       String subcategoria = jcomboSubCategorias.getSelectedItem().toString();
+       String categoria = jcomboCategorias.getSelectedItem().toString();
        Ingresos ingresos = new Ingresos();
        ingresos.setVisible(true);
-       String infos = jTextField2.getText();
-       Ingresos.txtCategoria.setText(infos);
+       
+       Ingresos.txtCategoria.setText(categoria + "-" + subcategoria);
        dispose();
     }//GEN-LAST:event_btnSelect2ActionPerformed
 
