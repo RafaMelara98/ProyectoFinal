@@ -65,7 +65,7 @@
                               <Component id="txtCuenta" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtDinero" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtCategoria" alignment="0" pref="209" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
                                   <Component id="Cancel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="Save" min="-2" max="-2" attributes="0"/>
