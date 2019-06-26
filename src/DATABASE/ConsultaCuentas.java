@@ -134,12 +134,11 @@ public class ConsultaCuentas {
             PreparedStatement ps2 = c.prepareStatement(query2);
             ps2.setInt(1, a);
             
-            int m = ps1.executeUpdate();
-            int n = ps2.executeUpdate();
+            if(ps1.executeUpdate() != 0)
+                if(ps2.executeUpdate() !=0)
+                    elimino = true;
+            
             c.close();
-            if(m != 0 && n !=0)
-                elimino = true;
-
         }catch(SQLException e){
             e.printStackTrace();
         }
