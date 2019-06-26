@@ -81,6 +81,7 @@ public class Egresos extends javax.swing.JFrame {
             }
         });
 
+        txtCategoria.setEditable(false);
         txtCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCategoriaActionPerformed(evt);
