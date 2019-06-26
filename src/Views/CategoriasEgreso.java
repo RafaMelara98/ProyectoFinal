@@ -89,7 +89,7 @@ public class CategoriasEgreso extends javax.swing.JFrame {
         jLabel1.setText("CATEGORIAS EGRESO");
 
         jcomboCategorias.setMaximumRowCount(7);
-        jcomboCategorias.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Ahorro", "Educación", "Electrodomésticos", "Entretenimiento", "Mascotas", "Servicios Hogar", " " }));
+        jcomboCategorias.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Ahorro", "Educación", "Electrodomésticos", "Entretenimiento", "Mascotas", "Servicios Hogar" }));
         jcomboCategorias.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jcomboCategoriasItemStateChanged(evt);
