@@ -1,14 +1,35 @@
 package ENTIDADES;
 
+import java.math.BigDecimal;
+import java.sql.Date;
+
 public class Cuenta {
     private String nombreCuenta;
-    private double Saldo;
+    private BigDecimal Saldo;
     private String tipoCuenta;
     private String Operacion;
+    private Date fecha;
+    private String descripcion;
     
     public Cuenta(){
     }
 
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    
     public String getNombreCuenta() {
         return nombreCuenta;
     }
@@ -17,11 +38,11 @@ public class Cuenta {
         this.nombreCuenta = nombreCuenta;
     }
 
-    public double getSaldo() {
+    public BigDecimal getSaldo() {
         return Saldo;
     }
 
-    public void setSaldo(double Saldo) {
+    public void setSaldo(BigDecimal Saldo) {
         this.Saldo = Saldo;
     }
 
@@ -40,4 +61,5 @@ public class Cuenta {
     public void setOperacion(String Operacion) {
         this.Operacion = Operacion;
     }
+
 }
