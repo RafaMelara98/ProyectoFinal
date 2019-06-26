@@ -107,6 +107,7 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="jcomboCategorias">
           <Properties>
+            <Property name="maximumRowCount" type="int" value="7"/>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="7">
                 <StringItem index="0" value="Seleccionar"/>
@@ -136,6 +137,7 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="jcomboSubCategorias">
           <Properties>
+            <Property name="maximumRowCount" type="int" value="3"/>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
             </Property>

@@ -31,7 +31,7 @@ public class CategoriasIngreso extends javax.swing.JFrame {
     
     
     public String[] infos(String infos){
-        String[] dato = new String[6];
+        String[] dato = new String[3];
         if(infos.equals("Apoyos de gobierno")){
             dato[0] = "Agua";
             dato[1] = "Energía";
@@ -87,6 +87,7 @@ public class CategoriasIngreso extends javax.swing.JFrame {
 
         jLabel1.setText("CATEGORIAS INGRESO");
 
+        jcomboCategorias.setMaximumRowCount(7);
         jcomboCategorias.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Apoyos de gobierno", "Arrendamientos", "Becas", "Pensión", "Préstamos", "Sueldo" }));
         jcomboCategorias.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -103,6 +104,7 @@ public class CategoriasIngreso extends javax.swing.JFrame {
 
         jLabel3.setText("Subcategoría:");
 
+        jcomboSubCategorias.setMaximumRowCount(3);
         jcomboSubCategorias.setToolTipText("");
         jcomboSubCategorias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
