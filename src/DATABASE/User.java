@@ -6,6 +6,7 @@
 package DATABASE;
 
 import ENTIDADES.Usuario;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,6 +19,7 @@ import java.util.List;
  * @author Van
  */
 public class User {
+    
     public Conexion bd;
     public User(){
         bd = new Conexion();
@@ -53,6 +55,7 @@ public class User {
     public boolean signUp(String usuario,String contraseña) throws SQLException{
         Connection conn = bd.getConnection();
         boolean isSuccess = false;
+        
         String query = "INSERT INTO usuario VALUES (default,?,?)";
         String query2 = "SELECT * FROM usuario  WHERE usuario= ?";
         try{
@@ -73,6 +76,113 @@ public class User {
         return isSuccess;
     }
     
+    public boolean Operacion(int idcategoria, int idcuenta, int idoperacion, int idusuario,BigDecimal dinero, java.sql.Date fecha,String descripcion) throws SQLException{
+        Connection conn = bd.getConnection();
+        boolean isSuccess = false;
+        String query3 = "INSERT INTO movimiento(idcategoria,idcuenta,idoperacion,idusuario,monto,fecha,descripcion) VALUES(?,?,?,?,?,?,?)";
+        String query4 = "SELECT * FROM movimiento WHERE idmovimiento= ?";
+   
+        
+        String lastCrawlDate = "2014-01-28";
+
+        //p.setDate(1, Date.valueOf(lastCrawlDate));
+        
+        try{
+            PreparedStatement pstm3 = conn.prepareStatement(query3);
+            PreparedStatement pstm4 = conn.prepareStatement(query4);
+            
+            
+       /*     pstm3.setString(1, "2");
+            pstm3.setString(2, "1");
+            pstm3.setString(3, "1");
+            pstm3.setString(4, "1");
+            pstm3.setString(5, "1");
+            pstm3.execute();
+       */
+            pstm3.setInt(1, idcategoria);
+            pstm3.setInt(2, idcuenta);
+            pstm3.setInt(3, idoperacion);
+            pstm3.setInt(4, idusuario);
+            pstm3.setBigDecimal(5, dinero);
+            pstm3.setDate(6,fecha);
+            pstm3.setString(7,descripcion);
+//*/
+//            pstm3.setDate(6, Date.valueOf("2018-05-21"));
+//            pstm3.setString(7, "descripcionxd");
+            pstm3.execute();
+            
+            pstm4.setInt(1, 1);
+            if(!pstm4.executeQuery().isFirst()){
+                pstm4.execute();
+                isSuccess = true;
+            }
+        }catch(SQLException ex){
+            isSuccess = false;
+            ex.printStackTrace();
+        }
+        return isSuccess;
+    }
+    public ArrayList<Movimientosrealizados> getAllMovimientos(){
+        Connection conn = bd.getConnection();
+        ArrayList<Movimientosrealizados> movList = new ArrayList();
+        String query = "SELECT ca.nombre as Categoria, cu.nombre as Cuenta, o.nombre as Operacion, mo.monto, mo.fecha\n" +
+"FROM movimiento mo, usuario u, categoria ca, cuenta cu, operacion o\n" +
+"WHERE mo.idcategoria=ca.idcategoria AND mo.idcuenta=cu.idcuenta AND o.idoperacion=mo.idoperacion AND u.idusuario=mo.idusuario AND mo.fecha is not null ORDER BY mo.fecha";
+        try{
+            PreparedStatement stm = conn.prepareStatement(query);
+            ResultSet rs = stm.executeQuery();
+            Movimientosrealizados mov;
+            
+            while(rs.next()){
+                mov= new Movimientosrealizados(rs.getString("categoria"),rs.getString("cuenta"),rs.getString("operacion"),rs.getString("monto"),rs.getString("fecha"));
+                movList.add(mov);
+            }
+            //conn.close();
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        return movList;
+    }
+    
+    public ArrayList<Cuentascreadas> getAllCuentas(){
+        Connection conn = bd.getConnection();
+        ArrayList<Cuentascreadas> cueList = new ArrayList();
+        String query = "SELECT c.nombre\n" + "FROM cuenta c";
+        try{
+            PreparedStatement stm = conn.prepareStatement(query);
+            ResultSet rs = stm.executeQuery();
+            Cuentascreadas cue;
+            
+            while(rs.next()){
+                cue= new Cuentascreadas(rs.getString("nombre"));
+                cueList.add(cue);
+            }
+            //conn.close();
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        return cueList;
+    }
+    
+    public int obteneridCuenta(String nombre){
+        int id=0;
+        Connection conn = bd.getConnection();
+        String query = "SELECT c.idcuenta FROM Cuenta c WHERE c.nombre = ?;";
+        
+        try{
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, nombre);
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next())
+                id = rs.getInt("idcuenta");
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return id;
+    } 
+  
     /*public List<Usuario> getAllMovimientos(){
         Connection conn = bd.getConnection();
         List<Usuario> users = new ArrayList();
@@ -91,4 +201,6 @@ public class User {
         }
         return users;
     }*/
+
+    
 }

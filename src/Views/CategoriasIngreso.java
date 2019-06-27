@@ -82,8 +82,8 @@ public class CategoriasIngreso extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jcomboSubCategorias = new javax.swing.JComboBox<>();
-        jTextField2 = new javax.swing.JTextField();
         btnSelect2 = new javax.swing.JToggleButton();
+        jTextField2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,18 +114,14 @@ public class CategoriasIngreso extends javax.swing.JFrame {
             }
         });
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-
         btnSelect2.setText("Seleccionar");
         btnSelect2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSelect2ActionPerformed(evt);
             }
         });
+
+        jTextField2.setText("jTextField1");
 
         javax.swing.GroupLayout jPanelCategoriaLayout = new javax.swing.GroupLayout(jPanelCategoria);
         jPanelCategoria.setLayout(jPanelCategoriaLayout);
@@ -149,8 +145,8 @@ public class CategoriasIngreso extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnSelect2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanelCategoriaLayout.createSequentialGroup()
-                        .addGap(114, 114, 114)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(198, 198, 198)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanelCategoriaLayout.setVerticalGroup(
@@ -169,9 +165,9 @@ public class CategoriasIngreso extends javax.swing.JFrame {
                     .addGroup(jPanelCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jcomboSubCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnSelect2)))
-                .addGap(18, 18, 18)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(150, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -200,15 +196,10 @@ public class CategoriasIngreso extends javax.swing.JFrame {
        
     }//GEN-LAST:event_jcomboSubCategoriasActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-       
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
     private void btnSelect2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelect2ActionPerformed
         // TODO add your handling code here:
         
-
+            jTextField2.setVisible(false);
             if(jcomboSubCategorias.getSelectedItem().equals("Agua")){
             jTextField2.setText("Agua");}
             else if(jcomboSubCategorias.getSelectedItem().equals("Energía"))
@@ -252,10 +243,34 @@ public class CategoriasIngreso extends javax.swing.JFrame {
             jTextField2.setText("Salario");
          
         
-       String subcategoria = jcomboSubCategorias.getSelectedItem().toString();
+      String subcategoria = jcomboSubCategorias.getSelectedItem().toString();
        String categoria = jcomboCategorias.getSelectedItem().toString();
+       int idcategoria=0;
+       
+       if(categoria == "Apoyos de gobierno"){
+           idcategoria = 1;
+       }
+       if(categoria == "Arrendamientos"){
+           idcategoria = 2;
+       }
+       if(categoria == "Becas"){
+           idcategoria = 3;
+       }
+       if(categoria == "Pensión"){
+           idcategoria = 4;
+       }
+       if(categoria == "Préstamos"){
+           idcategoria = 5;
+       }
+       if(categoria == "Sueldo"){
+           idcategoria = 6;
+       }
        Ingresos ingresos = new Ingresos(user);
        ingresos.setVisible(true);
+       
+       
+       ingresos.setIdcategoria(idcategoria);
+     
        
        Ingresos.txtCategoria.setText(categoria + "-" + subcategoria);
        dispose();

@@ -7,6 +7,7 @@ package Views;
 
 import ENTIDADES.Usuario;
 import DATABASE.User;
+import DATABASE.Movimientosrealizados;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,7 +30,7 @@ import javax.swing.table.DefaultTableModel;
 public class Movimientos extends javax.swing.JFrame {
     private Usuario producto;
     private User userDao;
-    private List<Usuario> users;
+    private ArrayList<Movimientosrealizados> movList;
     private Movimientos me;
     private JFrame window;
     private Usuario user;
@@ -39,6 +40,7 @@ public class Movimientos extends javax.swing.JFrame {
         me = this;
         this.user = user;
         this.window=window;
+        getData();
        
         
        
@@ -72,16 +74,16 @@ public class Movimientos extends javax.swing.JFrame {
 
         tbUsers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Categoria", "Cuenta", "Operacion", "Monto", "Fecha"
             }
         ));
         jScrollPane1.setViewportView(tbUsers);
+        if (tbUsers.getColumnModel().getColumnCount() > 0) {
+            tbUsers.getColumnModel().getColumn(0).setPreferredWidth(150);
+        }
 
         jButton1.setText("Regresar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -108,6 +110,7 @@ public class Movimientos extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Egresos)
@@ -122,12 +125,9 @@ public class Movimientos extends javax.swing.JFrame {
                         .addGap(79, 79, 79)
                         .addComponent(lblName))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
+                        .addGap(212, 212, 212)
                         .addComponent(jLabel1)))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(212, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,7 +137,7 @@ public class Movimientos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -165,7 +165,7 @@ public class Movimientos extends javax.swing.JFrame {
     private void EgresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EgresosActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        Egresos egresos = new Egresos(user);
+        Egreso1 egresos = new Egreso1(user);
         egresos.setVisible(true);
     }//GEN-LAST:event_EgresosActionPerformed
 
@@ -180,15 +180,20 @@ public class Movimientos extends javax.swing.JFrame {
     private javax.swing.JTable tbUsers;
     // End of variables declaration//GEN-END:variables
 
-  /*  private String[][] getData() {
+    public void getData() {
         userDao = new User();
-        users = userDao.getAllUsuarios();
-        String[][] mData = new String[users.size()][3];
-        
-        for (int i = 0; i < mData.length; i++) {
-            mData[i][0] = users.get(i).getUsername();
-            mData[i][1] = users.get(i).getPassword();
+        movList = userDao.getAllMovimientos();
+        Object[] row = new Object[6];
+        DefaultTableModel model = (DefaultTableModel)tbUsers.getModel();
+        for (int i = 0; i < movList.size(); i++) {
+            row[0]=movList.get(i).getCategoria();
+            row[1]=movList.get(i).getCuenta();
+            row[2]=movList.get(i).getOperacion();
+            row[3]=movList.get(i).getMonto();
+            row[4]=movList.get(i).getFecha();
+            model.addRow(row);
         }
-        return mData;
-    }*/
+    }
+    
+    
 }

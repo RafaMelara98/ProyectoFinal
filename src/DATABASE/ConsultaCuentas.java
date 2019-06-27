@@ -23,7 +23,7 @@ public class ConsultaCuentas {
         String query2= "SELECT * FROM cuenta WHERE cuenta.Nombre = ?;";
         
         String query3="SELECT cuenta.idcuenta FROM cuenta WHERE cuenta.Nombre = ?;";
-        String query4="INSERT INTO movimiento(idcuenta,idoperacion,idusuario,monto,fecha,descripcion) VALUES (?,?,?,?,?,?);";
+        String query4="INSERT INTO movimiento(idcategoria,idcuenta,idoperacion,idusuario,monto,fecha,descripcion) VALUES (1,?,?,?,?,?,?);";
         
         try{
             PreparedStatement ps = c.prepareStatement(query);
