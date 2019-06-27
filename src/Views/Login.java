@@ -17,9 +17,10 @@ public class Login extends javax.swing.JFrame {
 
     private JFrame window;
 
-    /**
-     * Creates new form Login
-     */
+/**
+ *
+ * @author Van
+ */
     public Login() {
         initComponents();
         lblValidator.setVisible(false);

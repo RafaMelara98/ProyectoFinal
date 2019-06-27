@@ -90,15 +90,7 @@ public class User {
         try{
             PreparedStatement pstm3 = conn.prepareStatement(query3);
             PreparedStatement pstm4 = conn.prepareStatement(query4);
-            
-            
-       /*     pstm3.setString(1, "2");
-            pstm3.setString(2, "1");
-            pstm3.setString(3, "1");
-            pstm3.setString(4, "1");
-            pstm3.setString(5, "1");
-            pstm3.execute();
-       */
+     
             pstm3.setInt(1, idcategoria);
             pstm3.setInt(2, idcuenta);
             pstm3.setInt(3, idoperacion);
@@ -106,9 +98,7 @@ public class User {
             pstm3.setBigDecimal(5, dinero);
             pstm3.setDate(6,fecha);
             pstm3.setString(7,descripcion);
-//*/
-//            pstm3.setDate(6, Date.valueOf("2018-05-21"));
-//            pstm3.setString(7, "descripcionxd");
+
             pstm3.execute();
             
             pstm4.setInt(1, 1);
@@ -206,24 +196,6 @@ public class User {
         return update;
     }
   
-    /*public List<Usuario> getAllMovimientos(){
-        Connection conn = bd.getConnection();
-        List<Usuario> users = new ArrayList();
-        String query = "SELECT * FROM movimiento";
-        try{
-            PreparedStatement stm = conn.prepareStatement(query);
-            ResultSet rs = stm.executeQuery();
-            while(rs.next()){
-                Usuario usuario = new Usuario();
-                usuario.setUsername(rs.getString("usuario"));
-                usuario.setPassword(rs.getString("contraseña"));
-                users.add(usuario);
-            }
-        }catch(SQLException ex){
-            ex.printStackTrace();
-        }
-        return users;
-    }*/
 
     
 }

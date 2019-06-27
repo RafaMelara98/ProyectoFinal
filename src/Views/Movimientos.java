@@ -24,9 +24,10 @@ import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+
 /**
  *
- * @author carlo
+ * @author Van
  */
 public class Movimientos extends javax.swing.JFrame {
     private Usuario producto;

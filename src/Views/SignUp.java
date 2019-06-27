@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author carlo
+ * @author Ric
  */
 public class SignUp extends javax.swing.JFrame {
     User userDao;
