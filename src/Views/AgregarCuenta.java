@@ -83,7 +83,7 @@ public class AgregarCuenta extends javax.swing.JFrame {
 
         jLabel5.setText("Monto: ");
 
-        spMonto.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        spMonto.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
 
         jLabel6.setText("Descripcion : ");
 
@@ -176,7 +176,7 @@ public class AgregarCuenta extends javax.swing.JFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         long time = System.currentTimeMillis();
         int m = cbOperacion.getSelectedIndex() + 1;
-        int value = (int) spMonto.getValue();
+        double value = (double) spMonto.getValue();
         if(value < 0 || txtNombreCuenta.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this,"Fields can not be empty","Alert",JOptionPane.WARNING_MESSAGE);
         }else{
