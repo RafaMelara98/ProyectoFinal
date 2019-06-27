@@ -41,6 +41,7 @@ public class Ingresos extends javax.swing.JFrame {
         initComponents();
         userDao = new User();
         this.user = user;
+        this.window = this;
         getData();
     }
     

@@ -41,6 +41,7 @@ public class Egreso extends javax.swing.JFrame {
         initComponents();
         userDao = new User();
         this.user = user;
+        this.window = this;
         getData();
     }
     
