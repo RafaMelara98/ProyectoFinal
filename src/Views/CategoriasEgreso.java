@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import javax.swing.DefaultComboBoxModel;
 /**
  *
- * @author Van
+ * @author Ric
  */
 public class CategoriasEgreso extends javax.swing.JFrame {
 

@@ -265,10 +265,8 @@ public class Cuentas extends javax.swing.JFrame {
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
-       
-        this.setVisible(false);
+        setVisible(false);
         window2.setVisible(true);
-        
     }//GEN-LAST:event_btnExitActionPerformed
 
     /**

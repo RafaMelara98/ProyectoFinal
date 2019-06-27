@@ -10,12 +10,11 @@ import ENTIDADES.Usuario;
 import DATABASE.User;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
+import javax.swing.JFrame;
 
-/**
- *
- * @author carlo
- */
 public class Login extends javax.swing.JFrame {
+
+    private JFrame window;
 
     /**
      * Creates new form Login
@@ -24,6 +23,11 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         lblValidator.setVisible(false);
         
+    }
+
+    Login(JFrame window) {
+        initComponents();
+        this.window = window;   
     }
 
     /**

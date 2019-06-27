@@ -39,10 +39,8 @@ public class Movimientos extends javax.swing.JFrame {
         initComponents();
         me = this;
         this.user = user;
-        this.window=window;
+        this.window = window;
         getData();
-       
-        
        
     }
     /**
@@ -152,7 +150,8 @@ public class Movimientos extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        this.window.setVisible(true);
+        Login login = new Login(window);
+        login.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void IngresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresosActionPerformed
