@@ -23,7 +23,7 @@ public class ConsultaCuentas {
         String query2= "SELECT * FROM cuenta WHERE cuenta.Nombre = ?;";
         
         String query3="SELECT cuenta.idcuenta FROM cuenta WHERE cuenta.Nombre = ?;";
-        String query4="INSERT INTO movimiento(idcategoria,idcuenta,idoperacion,idusuario,monto,fecha,descripcion) VALUES (1,?,?,?,?,?,?);";
+        String query4="INSERT INTO movimiento(idcategoria,idcuenta,idoperacion,idusuario,monto,fecha,descripcion) VALUES (null,?,?,?,?,?,?);";
         
         try{
             PreparedStatement ps = c.prepareStatement(query);
@@ -89,10 +89,11 @@ public class ConsultaCuentas {
     public List<Cuenta> obtenerCuentasUsuario(int idUsuario, String Operacion) {
         Connection c = con.getConnection();
         List<Cuenta> listaCuenta = new ArrayList();
-        String query = "SELECT cuenta.nombre, cuenta.descripcion, CAST(movimiento.monto AS decimal) AS monto, operacion.nombre AS operacion\n" +
+        String query =  "SELECT cuenta.nombre, cuenta.descripcion, CAST(SUM(movimiento.monto) AS decimal) AS monto, operacion.nombre AS operacion\n" +
                         "FROM cuenta, movimiento, operacion, usuario\n" +
                         "WHERE cuenta.idCuenta = movimiento.idCuenta AND operacion.idOperacion = movimiento.idOperacion \n" +
-                        "AND usuario.idUsuario = movimiento.idUsuario AND usuario.idUsuario = ? AND operacion.nombre = ?;";
+                        "AND usuario.idUsuario = movimiento.idUsuario AND usuario.idUsuario = ? AND operacion.nombre = ?\n" +
+                        "GROUP BY cuenta.nombre,cuenta.descripcion, operacion.nombre ;";
         
         try{
             PreparedStatement ps = c.prepareStatement(query);
@@ -155,7 +156,7 @@ public class ConsultaCuentas {
         String query =  "SELECT CAST(SUM(Movimiento.Monto) AS decimal ) AS Total\n" +
                         "FROM Movimiento, Operacion, Usuario\n" +
                         "WHERE Movimiento.idUsuario = Usuario.idUsuario AND Movimiento.idOperacion=Operacion.idOperacion\n" +
-                        "AND Usuario.idUsuario = ? AND Operacion.Nombre = ?;";
+                        "AND Usuario.idUsuario = ? AND Operacion.Nombre = ? ;";
         
         try{
             PreparedStatement ps = c.prepareStatement(query);
@@ -193,5 +194,4 @@ public class ConsultaCuentas {
         }
         return id;
     }
-
 }
