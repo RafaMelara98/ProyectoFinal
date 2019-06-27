@@ -102,10 +102,10 @@ public class ConsultaCuentas {
             
             while (rs.next()){
                 Cuenta unaCuenta = new Cuenta();
-                unaCuenta.setNombreCuenta(rs.getString("NombreCuenta"));
-                unaCuenta.setSaldo(rs.getBigDecimal("Monto"));
-                unaCuenta.setTipoCuenta(rs.getString("TipoCuenta"));
-                unaCuenta.setOperacion(rs.getString("Operacion"));
+                unaCuenta.setNombreCuenta(rs.getString("nombre"));
+                unaCuenta.setSaldo(rs.getBigDecimal("monto"));
+                unaCuenta.setTipoCuenta(rs.getString("descripcion"));
+                unaCuenta.setOperacion(rs.getString("operacion"));
                 listaCuenta.add(unaCuenta);
             }
         }catch(SQLException e){
