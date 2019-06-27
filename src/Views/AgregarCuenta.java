@@ -80,6 +80,11 @@ public class AgregarCuenta extends javax.swing.JFrame {
         jLabel4.setText("Operacion: ");
 
         cbOperacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Abono", "Cargo" }));
+        cbOperacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbOperacionActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Monto: ");
 
@@ -210,6 +215,10 @@ public class AgregarCuenta extends javax.swing.JFrame {
         setVisible(false);
         window.setVisible(true);
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void cbOperacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbOperacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbOperacionActionPerformed
 
     /**
      * @param args the command line arguments

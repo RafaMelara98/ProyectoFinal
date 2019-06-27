@@ -23,7 +23,7 @@ public class ConsultaCuentas {
         String query2= "SELECT * FROM cuenta WHERE cuenta.Nombre = ?;";
         
         String query3="SELECT cuenta.idcuenta FROM cuenta WHERE cuenta.Nombre = ?;";
-        String query4="INSERT INTO movimiento(idcategoria,idcuenta,idoperacion,idusuario,monto,fecha,descripcion) VALUES (null,?,?,?,?,?,?);";
+        String query4="INSERT INTO movimiento(idcategoria,idcuenta,idoperacion,idusuario,monto,fecha,descripcion) VALUES (1,?,?,?,?,?,?);";
         
         try{
             PreparedStatement ps = c.prepareStatement(query);
@@ -92,7 +92,7 @@ public class ConsultaCuentas {
         String query =  "SELECT cuenta.nombre, cuenta.descripcion, CAST(SUM(movimiento.monto) AS decimal) AS monto,operacion.nombre AS operacion\n" +
                         "FROM cuenta, movimiento, operacion, usuario\n" +
                         "WHERE cuenta.idCuenta = movimiento.idCuenta AND usuario.idUsuario = movimiento.idUsuario AND  usuario.idUsuario = ? \n" +
-                        "AND Movimiento.idCategoria IS NULL AND operacion.nombre = ? AND operacion.idOperacion = movimiento.idOperacion\n" +
+                        "AND operacion.nombre = ? AND operacion.idOperacion = movimiento.idOperacion\n" +
                         "GROUP BY cuenta.nombre,cuenta.descripcion,operacion;";
         
         try{
@@ -156,7 +156,7 @@ public class ConsultaCuentas {
         String query =  "SELECT CAST(SUM(Movimiento.Monto) AS decimal ) AS Total\n" +
                         "FROM Movimiento, Operacion, Usuario\n" +
                         "WHERE Movimiento.idUsuario = Usuario.idUsuario AND Movimiento.idOperacion=Operacion.idOperacion\n" +
-                        "AND Usuario.idUsuario = ? AND Operacion.Nombre = ? AND Movimiento.idCategoria IS NULL;";
+                        "AND Usuario.idUsuario = ? AND Operacion.Nombre = ?;";
         
         try{
             PreparedStatement ps = c.prepareStatement(query);
