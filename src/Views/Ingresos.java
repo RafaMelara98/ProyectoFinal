@@ -48,6 +48,10 @@ public class Ingresos extends javax.swing.JFrame {
         this.idcategoria = idcategoria;
     }
 
+    Ingresos(Cuentas aThis, Usuario user) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getIdcategoria() {
         return idcategoria;
     }
@@ -138,7 +142,6 @@ public class Ingresos extends javax.swing.JFrame {
         jLabel6.setText("Seleccionar categoria primero");
 
         jComboBox1.setMaximumRowCount(3);
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Debito", "Credito", "Efectivo" }));
         jComboBox1.setSelectedIndex(-1);
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -288,11 +291,11 @@ public class Ingresos extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             // TODO add your handling code here:
+            setVisible(false);
             Cuentas cuenta = new Cuentas(window,user);
-            this.setVisible(false);
             cuenta.setVisible(true);
         } catch (SQLException ex) {
-            Logger.getLogger(Egreso1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Egreso.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

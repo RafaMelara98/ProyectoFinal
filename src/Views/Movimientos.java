@@ -165,7 +165,7 @@ public class Movimientos extends javax.swing.JFrame {
     private void EgresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EgresosActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        Egreso1 egresos = new Egreso1(user);
+        Egreso egresos = new Egreso(user);
         egresos.setVisible(true);
     }//GEN-LAST:event_EgresosActionPerformed
 

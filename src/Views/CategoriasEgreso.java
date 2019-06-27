@@ -17,7 +17,7 @@ import javax.swing.DefaultComboBoxModel;
  *
  * @author Van
  */
-public class CategoriasEgreso1 extends javax.swing.JFrame {
+public class CategoriasEgreso extends javax.swing.JFrame {
 
     
     JFrame window;
@@ -25,7 +25,7 @@ public class CategoriasEgreso1 extends javax.swing.JFrame {
     /**
      * Creates new form Categorias
      */
-    public CategoriasEgreso1(JFrame window, Usuario user) {
+    public CategoriasEgreso(JFrame window, Usuario user) {
         initComponents();
         this.window = window;
         this.user = user;
@@ -121,8 +121,6 @@ public class CategoriasEgreso1 extends javax.swing.JFrame {
             }
         });
 
-        jTextField2.setText("jTextField1");
-
         javax.swing.GroupLayout jPanelCategoriaLayout = new javax.swing.GroupLayout(jPanelCategoria);
         jPanelCategoria.setLayout(jPanelCategoriaLayout);
         jPanelCategoriaLayout.setHorizontalGroup(
@@ -145,8 +143,8 @@ public class CategoriasEgreso1 extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnSelect2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanelCategoriaLayout.createSequentialGroup()
-                        .addGap(182, 182, 182)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(138, 138, 138)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanelCategoriaLayout.setVerticalGroup(
@@ -265,14 +263,14 @@ public class CategoriasEgreso1 extends javax.swing.JFrame {
        if(categoria == "Sueldo"){
            idcategoria = 6;
        }
-       Egreso1 ingresos = new Egreso1(user);
+       Egreso ingresos = new Egreso(user);
        ingresos.setVisible(true);
        
        
        ingresos.setIdcategoria(idcategoria);
      
        
-       Egreso1.txtCategoria.setText(categoria + "-" + subcategoria);
+       Egreso.txtCategoria.setText(categoria + "-" + subcategoria);
        dispose();
     }//GEN-LAST:event_btnSelect2ActionPerformed
 

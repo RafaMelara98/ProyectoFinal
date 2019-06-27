@@ -28,7 +28,7 @@ import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Egreso1 extends javax.swing.JFrame {
+public class Egreso extends javax.swing.JFrame {
 
     User userDao;
     JFrame window;
@@ -37,14 +37,14 @@ public class Egreso1 extends javax.swing.JFrame {
     ArrayList<Cuentascreadas> cueList;
     
     
-    public Egreso1(Usuario user) {
+    public Egreso(Usuario user) {
         initComponents();
         userDao = new User();
         this.user = user;
         getData();
     }
     
-    public Egreso1(int idcategoria){
+    public Egreso(int idcategoria){
         this.idcategoria = idcategoria;
     }
 
@@ -138,7 +138,6 @@ public class Egreso1 extends javax.swing.JFrame {
         jLabel6.setText("Seleccionar categoria primero");
 
         jComboBox1.setMaximumRowCount(3);
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Debito", "Credito", "Efectivo" }));
         jComboBox1.setSelectedIndex(-1);
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -247,7 +246,7 @@ public class Egreso1 extends javax.swing.JFrame {
     private void OpcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        CategoriasEgreso1 categorias = new CategoriasEgreso1(this,user);
+        CategoriasEgreso categorias = new CategoriasEgreso(this,user);
         categorias.setVisible(true);
         categorias.setResizable(false);
         
@@ -295,7 +294,7 @@ public class Egreso1 extends javax.swing.JFrame {
             this.setVisible(false);
             cuenta.setVisible(true);
         } catch (SQLException ex) {
-            Logger.getLogger(Egreso1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Egreso.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -320,14 +319,16 @@ public class Egreso1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Egreso1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Egreso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Egreso1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Egreso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Egreso1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Egreso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Egreso1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Egreso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
