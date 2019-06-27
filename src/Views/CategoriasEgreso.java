@@ -34,36 +34,37 @@ public class CategoriasEgreso extends javax.swing.JFrame {
     
     public String[] infos(String infos){
         String[] dato = new String[3];
-        if(infos.equals("Apoyos de gobierno")){
-            dato[0] = "Agua";
-            dato[1] = "Energía";
-            dato[2] = "Seguridad";
+        if(infos.equals("Ahorro")){
+            dato[0] = "Casa";
+            dato[1] = "Comida";
+            dato[2] = "Vestimenta";
         }
-        if(infos.equals("Arrendamientos")){
-            dato[0] = "Carro";
-            dato[1] = "Computadora";
-            dato[2] = "Casa";
+        if(infos.equals("Educación")){
+            dato[0] = "Colegiatura";
+            dato[1] = "Uniforme";
+            dato[2] = "Útiles Escolares";
         }
-        if(infos.equals("Becas")){
-            dato[0] = "Post-Grado";
-            dato[1] = "Pre-Grado";
-            dato[2] = "Maestría";
+        if(infos.equals("Electrodomésticos")){
+            dato[0] = "Laptop";
+            dato[1] = "Refrigeradora";
+            dato[2] = "Microondas";
         }
-        if(infos.equals("Pensión")){
-            dato[0] = "Casa San Benito";
-            dato[1] = "Hostal Café San Andres";
-            dato[2] = "Hostal Doña Marta";
+        if(infos.equals("Entretenimiento")){
+            dato[0] = "Peliculas";
+            dato[1] = "Videojuegos";
+            dato[2] = "Televisión";
         }
-        if(infos.equals("Préstamos")){
-            dato[0] = "Banco BAC Credomatic";
-            dato[1] = "Banco Cuscatlán";
-            dato[2] = "Banco Davivienda";
+        if(infos.equals("Mascotas")){
+            dato[0] = "Alimento";
+            dato[1] = "Medicamentos";
+            dato[2] = "Veterinaria";
         }
-        if(infos.equals("Sueldo")){
-            dato[0] = "Bonos";
-            dato[1] = "Aguinaldo";
-            dato[2] = "Salario";
+        if(infos.equals("Servicios Hogar")){
+            dato[0] = "Internet";
+            dato[1] = "Cable TV";
+            dato[2] = "Teléfono";
         }
+                
         return dato;
     }
     
@@ -90,7 +91,7 @@ public class CategoriasEgreso extends javax.swing.JFrame {
         jLabel1.setText("CATEGORIAS EGRESO");
 
         jcomboCategorias.setMaximumRowCount(7);
-        jcomboCategorias.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Apoyos de gobierno", "Arrendamientos", "Becas", "Pensión", "Préstamos", "Sueldo" }));
+        jcomboCategorias.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Ahorro", "Educación", "Electrodomésticos", "Entretenimiento", "Mascotas", "Servicios Hogar", " " }));
         jcomboCategorias.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jcomboCategoriasItemStateChanged(evt);
@@ -196,71 +197,69 @@ public class CategoriasEgreso extends javax.swing.JFrame {
 
     private void btnSelect2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelect2ActionPerformed
         // TODO add your handling code here:
-        
-            jTextField2.setVisible(false);
-            if(jcomboSubCategorias.getSelectedItem().equals("Agua")){
-            jTextField2.setText("Agua");}
-            else if(jcomboSubCategorias.getSelectedItem().equals("Energía"))
-            jTextField2.setText("Energía");
-            else if(jcomboSubCategorias.getSelectedItem().equals("Seguridad"))
-            jTextField2.setText("Seguridad");
        
-            if(jcomboSubCategorias.getSelectedItem().equals("Carro")){
-            jTextField2.setText("Carro");}
-            else if(jcomboSubCategorias.getSelectedItem().equals("Computadora"))
-            jTextField2.setText("Computadora");
-            else if(jcomboSubCategorias.getSelectedItem().equals("Casa"))
-            jTextField2.setText("Casa");
-           
-            if(jcomboSubCategorias.getSelectedItem().equals("Post-Grado")){
-            jTextField2.setText("Post-Grado");}
-            else if(jcomboSubCategorias.getSelectedItem().equals("Pre-Grado"))
-            jTextField2.setText("Pre-Grado");
-            else if(jcomboSubCategorias.getSelectedItem().equals("Maestría"))
-            jTextField2.setText("Maestría");
-  
-            if(jcomboSubCategorias.getSelectedItem().equals("Casa San Benito")){
-            jTextField2.setText("Casa San Benito");}
-            else if(jcomboSubCategorias.getSelectedItem().equals("Hostal Café San Andres"))
-            jTextField2.setText("Hostal Café San Andres");
-            else if(jcomboSubCategorias.getSelectedItem().equals("Hostal Doña Marta"))
-            jTextField2.setText("Hostal Doña Marta");
+            if(jcomboSubCategorias.getSelectedItem().equals("Casa")){
+            jTextField2.setText("Casa");}
+            else if(jcomboSubCategorias.getSelectedItem().equals("Comida"))
+            jTextField2.setText("Comida");
+            else if(jcomboSubCategorias.getSelectedItem().equals("Vestimenta"))
+            jTextField2.setText("Vestimenta");
+      
+            if(jcomboSubCategorias.getSelectedItem().equals("Colegiatura")){
+            jTextField2.setText("Colegiatura");}
+            else if(jcomboSubCategorias.getSelectedItem().equals("Uniforme"))
+            jTextField2.setText("Uniforme");
+            else if(jcomboSubCategorias.getSelectedItem().equals("Útiles Escolares"))
+            jTextField2.setText("Útiles Escolares");
+     
+            if(jcomboSubCategorias.getSelectedItem().equals("Laptop")){
+            jTextField2.setText("Laptop");}
+            else if(jcomboSubCategorias.getSelectedItem().equals("Refrigeradora"))
+            jTextField2.setText("Refrigeradora");
+            else if(jcomboSubCategorias.getSelectedItem().equals("Microondas"))
+            jTextField2.setText("Microondas");
+    
+            if(jcomboSubCategorias.getSelectedItem().equals("Peliculas")){
+            jTextField2.setText("Peliculas");}
+            else if(jcomboSubCategorias.getSelectedItem().equals("Videojuegos"))
+            jTextField2.setText("Videojuegos");
+            else if(jcomboSubCategorias.getSelectedItem().equals("Televisión"))
+            jTextField2.setText("Televisión");
             
-            if(jcomboSubCategorias.getSelectedItem().equals("Banco BAC Credomatic")){
-            jTextField2.setText("Banco BAC Credomatic");}
-            else if(jcomboSubCategorias.getSelectedItem().equals("Banco Cuscatlán"))
-            jTextField2.setText("Banco Cuscatlán");
-            else if(jcomboSubCategorias.getSelectedItem().equals("Banco Davivienda"))
-            jTextField2.setText("Banco Davivienda");
-            
-            if(jcomboSubCategorias.getSelectedItem().equals("Bonos")){
-            jTextField2.setText("Bonos");}
-            else if(jcomboSubCategorias.getSelectedItem().equals("Aguinaldo"))
-            jTextField2.setText("Aguinaldo");
-            else if(jcomboSubCategorias.getSelectedItem().equals("Salario"))
-            jTextField2.setText("Salario");
-         
+            if(jcomboSubCategorias.getSelectedItem().equals("Alimento")){
+            jTextField2.setText("Alimento");}
+            else if(jcomboSubCategorias.getSelectedItem().equals("Medicamentos"))
+            jTextField2.setText("Medicamentos");
+            else if(jcomboSubCategorias.getSelectedItem().equals("Veterinaria"))
+            jTextField2.setText("Veterinaria");
+      
+            if(jcomboSubCategorias.getSelectedItem().equals("Internet")){
+            jTextField2.setText("Internet");}
+            else if(jcomboSubCategorias.getSelectedItem().equals("Cable TV"))
+            jTextField2.setText("Cable TV");
+            else if(jcomboSubCategorias.getSelectedItem().equals("Teléfono"))
+            jTextField2.setText("Teléfono");
         
       String subcategoria = jcomboSubCategorias.getSelectedItem().toString();
        String categoria = jcomboCategorias.getSelectedItem().toString();
        int idcategoria=0;
        
-       if(categoria == "Apoyos de gobierno"){
+       if(categoria == "Ahorro"){
            idcategoria = 1;
        }
-       if(categoria == "Arrendamientos"){
+       if(categoria == "Educación"){
            idcategoria = 2;
        }
-       if(categoria == "Becas"){
+       if(categoria == "Electrodomésticos"){
            idcategoria = 3;
        }
-       if(categoria == "Pensión"){
+       if(categoria == "Entretenimiento"){
            idcategoria = 4;
        }
-       if(categoria == "Préstamos"){
+       if(categoria == "Mascotas"){
            idcategoria = 5;
        }
-       if(categoria == "Sueldo"){
+       if(categoria == "Servicios Hogar"){
            idcategoria = 6;
        }
        Egreso ingresos = new Egreso(user);
