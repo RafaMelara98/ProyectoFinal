@@ -128,7 +128,9 @@ public class Cuentas extends javax.swing.JFrame {
         lblTotal1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblTotal1.setText("Total :");
 
+        lblTotal2.setBackground(new java.awt.Color(255, 0, 0));
         lblTotal2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblTotal2.setForeground(new java.awt.Color(255, 0, 0));
         lblTotal2.setText("Total :");
 
         jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
@@ -190,7 +192,7 @@ public class Cuentas extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTotal1)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -214,7 +216,7 @@ public class Cuentas extends javax.swing.JFrame {
                             .addComponent(lblTotal2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

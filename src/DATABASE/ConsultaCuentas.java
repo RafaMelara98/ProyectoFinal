@@ -89,7 +89,7 @@ public class ConsultaCuentas {
     public List<Cuenta> obtenerCuentasUsuario(int idUsuario, String Operacion) {
         Connection c = con.getConnection();
         List<Cuenta> listaCuenta = new ArrayList();
-        String query = "SELECT cuenta.nombre, cuenta.descripcion, movimiento.monto, operacion.nombre AS operacion\n" +
+        String query = "SELECT cuenta.nombre, cuenta.descripcion, CAST(movimiento.monto AS decimal) AS monto, operacion.nombre AS operacion\n" +
                         "FROM cuenta, movimiento, operacion, usuario\n" +
                         "WHERE cuenta.idCuenta = movimiento.idCuenta AND operacion.idOperacion = movimiento.idOperacion \n" +
                         "AND usuario.idUsuario = movimiento.idUsuario AND usuario.idUsuario = ? AND operacion.nombre = ?;";
@@ -152,7 +152,7 @@ public class ConsultaCuentas {
     public BigDecimal totalSegunCuenta(int idUsuario,String Operacion) throws SQLException{
         BigDecimal bd = BigDecimal.valueOf(0.0);
         Connection c = con.getConnection();
-        String query =  "SELECT SUM(Movimiento.Monto) AS Total\n" +
+        String query =  "SELECT CAST(SUM(Movimiento.Monto) AS decimal ) AS Total\n" +
                         "FROM Movimiento, Operacion, Usuario\n" +
                         "WHERE Movimiento.idUsuario = Usuario.idUsuario AND Movimiento.idOperacion=Operacion.idOperacion\n" +
                         "AND Usuario.idUsuario = ? AND Operacion.Nombre = ?;";
