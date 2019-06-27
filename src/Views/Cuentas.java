@@ -249,8 +249,8 @@ public class Cuentas extends javax.swing.JFrame {
 
         try {
             int m = cuenta2.obtnerIdUsuario(user.getUsername());
-            lblTotal1.setText("Total: " + cuenta2.totalSegunCuenta(m,"Abono"));
-            lblTotal2.setText("Total: " + cuenta2.totalSegunCuenta(m, "Cargo"));
+            lblTotal1.setText("Total: $" + cuenta2.totalSegunCuenta(m,"Abono"));
+            lblTotal2.setText("Total: $" + cuenta2.totalSegunCuenta(m, "Cargo"));
             String headers[] = {"Nombre de la cuenta","Tipo de cuenta","Monto"};
             
             String dataAbono[][] = getDataAbono();
