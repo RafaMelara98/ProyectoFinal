@@ -40,6 +40,8 @@ public class Ingresos extends javax.swing.JFrame {
     public Ingresos(Usuario user) {
         initComponents();
         userDao = new User();
+        this.setResizable(false);
+        this.setTitle("Ingreso");
         this.user = user;
         this.window = this;
         getData();

@@ -38,8 +38,11 @@ public class Movimientos extends javax.swing.JFrame {
      public Movimientos(JFrame window,Usuario user) {
         initComponents();
         me = this;
+        this.setResizable(false);
+        this.setTitle("Movimientos");
         this.user = user;
         this.window = window;
+        
         getData();
        
     }

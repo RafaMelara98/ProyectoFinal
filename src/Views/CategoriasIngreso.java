@@ -27,6 +27,8 @@ public class CategoriasIngreso extends javax.swing.JFrame {
      */
     public CategoriasIngreso(JFrame window, Usuario user) {
         initComponents();
+        this.setResizable(false);
+        this.setTitle("Categorías");
         this.window = window;
         this.user = user;
     }
@@ -120,6 +122,8 @@ public class CategoriasIngreso extends javax.swing.JFrame {
                 btnSelect2ActionPerformed(evt);
             }
         });
+
+        jTextField2.setEditable(false);
 
         javax.swing.GroupLayout jPanelCategoriaLayout = new javax.swing.GroupLayout(jPanelCategoria);
         jPanelCategoria.setLayout(jPanelCategoriaLayout);

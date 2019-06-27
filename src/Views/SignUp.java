@@ -24,6 +24,9 @@ public class SignUp extends javax.swing.JFrame {
     public SignUp(JFrame window) {
         initComponents();
         userDao = new User();
+           
+        this.setResizable(false);
+        this.setTitle("Registrar cuenta");
         this.window = window;
     }
 

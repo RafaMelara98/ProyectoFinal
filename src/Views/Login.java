@@ -22,12 +22,14 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         lblValidator.setVisible(false);
+        this.setResizable(false);
+        this.setTitle("Inicio");
         
     }
 
     Login(JFrame window) {
         initComponents();
-        this.window = window;   
+        this.window = window;
     }
 
     /**
