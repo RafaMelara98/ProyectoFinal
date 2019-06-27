@@ -265,11 +265,14 @@ public class Egreso extends javax.swing.JFrame {
         // TODO add your handling code here:
         ConsultaCuentas Cuenta = new ConsultaCuentas();
         
-                 
-                double dinero = Double.parseDouble(txtDinero.getText());
-                if(dinero>0){
-                    dinero = dinero*-1;
-                }
+                
+        if(txtDinero.getText().isEmpty() || jDateChooser1.getDate()==null){
+            JOptionPane.showMessageDialog(this,"Fields can not be empty","Alert",JOptionPane.WARNING_MESSAGE);
+        }else{
+        double dinero = Double.parseDouble(txtDinero.getText());
+        if(dinero>0){
+            dinero = dinero*-1;
+        }
         if(txtDinero.getText().isEmpty() || txtCategoria.getText().isEmpty() || jDateChooser1.getDate().toString().isEmpty()){
             JOptionPane.showMessageDialog(this,"Fields can not be empty","Alert",JOptionPane.WARNING_MESSAGE);
         }else{
@@ -287,7 +290,7 @@ public class Egreso extends javax.swing.JFrame {
                 ex.printStackTrace();
             }
         }
-         
+        }
        
     }//GEN-LAST:event_SaveActionPerformed
 

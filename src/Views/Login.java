@@ -11,6 +11,7 @@ import DATABASE.User;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
 
@@ -181,7 +182,9 @@ public class Login extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
         User userDao = new User();
-        
+        if(txtUsername.getText().isEmpty() || txtPassword.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Fields can not be empty","Alert",JOptionPane.WARNING_MESSAGE);
+        }else{
         try{
             Usuario user = userDao.Login(txtUsername.getText(), new String(txtPassword.getPassword()));
             if(user !=null){
@@ -197,7 +200,7 @@ public class Login extends javax.swing.JFrame {
         }catch(SQLException e){
             lblValidator.setVisible(true);
         }
-        
+        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

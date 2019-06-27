@@ -122,16 +122,21 @@ public class User {
         }
         return isSuccess;
     }
-    public ArrayList<Movimientosrealizados> getAllMovimientos(){
+    
+    public ArrayList<Movimientosrealizados> getAllMovimientos(int idusuario){
+        ConsultaCuentas id = new ConsultaCuentas();
         Connection conn = bd.getConnection();
         ArrayList<Movimientosrealizados> movList = new ArrayList();
         String query = "SELECT ca.nombre as Categoria, cu.nombre as Cuenta, o.nombre as Operacion, mo.monto, mo.fecha\n" +
-"FROM movimiento mo, usuario u, categoria ca, cuenta cu, operacion o\n" +
-"WHERE mo.idcategoria=ca.idcategoria AND mo.idcuenta=cu.idcuenta AND o.idoperacion=mo.idoperacion AND u.idusuario=mo.idusuario AND mo.fecha is not null ORDER BY mo.fecha";
+        "FROM movimiento mo, usuario u, categoria ca, cuenta cu, operacion o\n" +
+        "WHERE mo.idcategoria=ca.idcategoria AND mo.idcuenta=cu.idcuenta AND o.idoperacion=mo.idoperacion AND u.idusuario=mo.idusuario AND mo.fecha is not null AND mo.idusuario = ?  ORDER BY mo.fecha";
         try{
+            System.out.println(idusuario);
             PreparedStatement stm = conn.prepareStatement(query);
+            stm.setInt(1,idusuario);
             ResultSet rs = stm.executeQuery();
             Movimientosrealizados mov;
+            
             
             while(rs.next()){
                 mov= new Movimientosrealizados(rs.getString("categoria"),rs.getString("cuenta"),rs.getString("operacion"),rs.getString("monto"),rs.getString("fecha"));

@@ -268,10 +268,12 @@ public class Ingresos extends javax.swing.JFrame {
         // TODO add your handling code here:
         ConsultaCuentas Cuenta = new ConsultaCuentas();
         
-                 
-                double dinero = Double.parseDouble(txtDinero.getText());
+       if(txtDinero.getText().isEmpty() || jDateChooser1.getDate()==null){
+            JOptionPane.showMessageDialog(this,"Fields can not be empty","Alert",JOptionPane.WARNING_MESSAGE);
+        }else{
+        double dinero = Double.parseDouble(txtDinero.getText());
         if(txtDinero.getText().isEmpty() || txtCategoria.getText().isEmpty() || dinero<0 || jDateChooser1.getDate().toString().isEmpty()){
-            JOptionPane.showMessageDialog(this,"Fields can not be empty or dinero is negative","Alert",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Fields can not be empty or money is negative","Alert",JOptionPane.WARNING_MESSAGE);
         }else{
             try{
 //                BigDecimal decimal = new BigDecimal(txtDinero.toString());
@@ -287,8 +289,7 @@ public class Ingresos extends javax.swing.JFrame {
                 ex.printStackTrace();
             }
         }
-         
-       
+       }
     }//GEN-LAST:event_SaveActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

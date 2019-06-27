@@ -5,6 +5,7 @@
  */
 package Views;
 
+import DATABASE.ConsultaCuentas;
 import ENTIDADES.Usuario;
 import DATABASE.User;
 import DATABASE.Movimientosrealizados;
@@ -184,7 +185,8 @@ public class Movimientos extends javax.swing.JFrame {
 
     public void getData() {
         userDao = new User();
-        movList = userDao.getAllMovimientos();
+        ConsultaCuentas cuenta = new ConsultaCuentas();
+        movList = userDao.getAllMovimientos(cuenta.obtnerIdUsuario(user.getUsername()));
         Object[] row = new Object[6];
         DefaultTableModel model = (DefaultTableModel)tbUsers.getModel();
         for (int i = 0; i < movList.size(); i++) {
