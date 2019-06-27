@@ -93,6 +93,8 @@ public class ActualizarCuenta extends javax.swing.JFrame {
             }
         });
 
+        spMonto.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+
         jLabel6.setText("Nombre de la cuenta actual: ");
 
         txtCuentaActual.addActionListener(new java.awt.event.ActionListener() {
@@ -113,15 +115,13 @@ public class ActualizarCuenta extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel4)
                             .addComponent(jLabel3)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(cbTipoCuenta, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cbOperacion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtNombre)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGap(50, 50, 50)
-                                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cbTipoCuenta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(50, 50, 50)
+                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel5)
                             .addComponent(spMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)
@@ -167,7 +167,7 @@ public class ActualizarCuenta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        int m = (int) spMonto.getValue();
+        double m = (double) spMonto.getValue();
         if(m < 0 || txtNombre.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this,"Fields can not be empty","Alert",JOptionPane.WARNING_MESSAGE);
         }else{

@@ -6,11 +6,15 @@
 package Views;
 
 import DATABASE.ConsultaCuentas;
+import ENTIDADES.Cuenta;
 import ENTIDADES.Usuario;
+import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,6 +24,7 @@ public class Cuentas extends javax.swing.JFrame {
     private JFrame window;
     private Usuario user;
     private ConsultaCuentas cuenta2;
+    private List<Cuenta> listaCuentas;
     /**
      * Creates new form Menu
      */
@@ -30,8 +35,17 @@ public class Cuentas extends javax.swing.JFrame {
         cuenta2 = new ConsultaCuentas();
         int m = cuenta2.obtnerIdUsuario(user.getUsername());
         lblTotal1.setText("Total: " + cuenta2.totalSegunCuenta(m,"Abono"));
-        
         lblTotal2.setText("Total: " + cuenta2.totalSegunCuenta(m, "Cargo"));
+        
+        String headers[] = {"Nombre de la cuenta","Tipo de cuenta","Monto"};
+        String dataAbono[][] = getDataAbono();
+        String dataCargo[][] = getDataCargo();   
+
+        
+        DefaultTableModel model = new DefaultTableModel(dataAbono,headers);
+        DefaultTableModel model2 = new DefaultTableModel(dataCargo,headers);
+        tbAbono.setModel(model);
+        tbCargo.setModel(model2);
         
         
     }
@@ -49,14 +63,15 @@ public class Cuentas extends javax.swing.JFrame {
         btnAgregar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbCargo = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tbAbono = new javax.swing.JTable();
         lblTotal1 = new javax.swing.JLabel();
         lblTotal2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JButton();
+        btnActualizarPag = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,7 +92,7 @@ public class Cuentas extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Abono");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbCargo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -88,12 +103,12 @@ public class Cuentas extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbCargo);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Cargo");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tbAbono.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -104,7 +119,7 @@ public class Cuentas extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tbAbono);
 
         lblTotal1.setText("Total :");
 
@@ -120,6 +135,13 @@ public class Cuentas extends javax.swing.JFrame {
             }
         });
 
+        btnActualizarPag.setText("Actualizar pagina");
+        btnActualizarPag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarPagActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,10 +151,12 @@ public class Cuentas extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(btnAgregar)
-                        .addGap(32, 32, 32)
+                        .addGap(18, 18, 18)
                         .addComponent(btnActualizar)
-                        .addGap(31, 31, 31)
-                        .addComponent(btnEliminar))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEliminar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnActualizarPag))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -151,11 +175,11 @@ public class Cuentas extends javax.swing.JFrame {
                         .addComponent(lblTotal2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,12 +203,11 @@ public class Cuentas extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(btnActualizarPag, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnActualizar)
+                        .addComponent(btnEliminar)))
                 .addContainerGap())
         );
 
@@ -192,51 +215,47 @@ public class Cuentas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+
+            ActualizarCuenta actualizar = new ActualizarCuenta(window);
+            setVisible(false);
+            actualizar.setVisible(true);
             
-        ActualizarCuenta actualizar = new ActualizarCuenta(window);
-        setVisible(false);
-        actualizar.setVisible(true);
-        
-        try {
-            int m = cuenta2.obtnerIdUsuario(user.getUsername());
-            lblTotal1.setText("Total: " + cuenta2.totalSegunCuenta(m,"Abono"));
-            
-            lblTotal2.setText("Total: " + cuenta2.totalSegunCuenta(m, "Cargo"));
-        } catch (SQLException ex) {
-            Logger.getLogger(Cuentas.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         
-        AgregarCuenta cuenta = new AgregarCuenta(window,user);
-        setVisible(false);
-        cuenta.setVisible(true);
-        
-        int m = cuenta2.obtnerIdUsuario(user.getUsername());
-        try {
-            lblTotal1.setText("Total: " + cuenta2.totalSegunCuenta(m,"Abono"));
-            lblTotal2.setText("Total: " + cuenta2.totalSegunCuenta(m, "Cargo"));
-        } catch (SQLException ex) {
-            Logger.getLogger(Cuentas.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+            AgregarCuenta cuenta = new AgregarCuenta(window,user);
+            setVisible(false);
+            cuenta.setVisible(true);
+
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-        EliminarCuenta cuenta = new EliminarCuenta(window,user);
-        setVisible(false);
-        cuenta.setVisible(true);
-        
-        int m = cuenta2.obtnerIdUsuario(user.getUsername());
+
+            EliminarCuenta cuenta = new EliminarCuenta(window,user);
+            setVisible(false);
+            cuenta.setVisible(true);
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnActualizarPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarPagActionPerformed
+
         try {
+            int m = cuenta2.obtnerIdUsuario(user.getUsername());
             lblTotal1.setText("Total: " + cuenta2.totalSegunCuenta(m,"Abono"));
             lblTotal2.setText("Total: " + cuenta2.totalSegunCuenta(m, "Cargo"));
+            String headers[] = {"Nombre de la cuenta","Tipo de cuenta","Monto"};
+            
+            String dataAbono[][] = getDataAbono();
+            String dataCargo[][] = getDataCargo();
+            DefaultTableModel model = new DefaultTableModel(dataAbono,headers);
+            DefaultTableModel model2 = new DefaultTableModel(dataCargo,headers);            
+            tbAbono.setModel(model);
+            tbCargo.setModel(model2);
+            
         } catch (SQLException ex) {
             Logger.getLogger(Cuentas.class.getName()).log(Level.SEVERE, null, ex);
-        }        
-    }//GEN-LAST:event_btnEliminarActionPerformed
+        }
+    }//GEN-LAST:event_btnActualizarPagActionPerformed
 
     /**
      * @param args the command line arguments
@@ -274,6 +293,7 @@ public class Cuentas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnActualizarPag;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JLabel jLabel1;
@@ -281,9 +301,64 @@ public class Cuentas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JLabel lblTotal1;
     private javax.swing.JLabel lblTotal2;
+    private javax.swing.JTable tbAbono;
+    private javax.swing.JTable tbCargo;
     // End of variables declaration//GEN-END:variables
+    private String[][] getDataAbono() {
+        int m = cuenta2.obtnerIdUsuario(user.getUsername());
+        listaCuentas = cuenta2.obtenerCuentasUsuario(m,"Abono");
+        String[][] mData = new String[listaCuentas.size()][3];
+        BigDecimal mn[][]= getMontoAbono();
+        
+        for (int i = 0; i < mData.length; i++) {
+            if(listaCuentas.get(i).getOperacion().equals("Abono")){
+                mData[i][0] = listaCuentas.get(i).getNombreCuenta();
+                mData[i][1] = listaCuentas.get(i).getTipoCuenta();
+                mData[i][2] = mn[i][0].toString();
+            }
+        }
+        return mData;
+    }
+        private String[][] getDataCargo() {
+        int m = cuenta2.obtnerIdUsuario(user.getUsername());
+        listaCuentas = cuenta2.obtenerCuentasUsuario(m,"Cargo");
+        String[][] mData = new String[listaCuentas.size()][3];
+        BigDecimal mn[][]= getMontoCargo();
+        
+        for (int i = 0; i < mData.length; i++) {
+            if(listaCuentas.get(i).getOperacion().equals("Cargo")){
+                mData[i][0] = listaCuentas.get(i).getNombreCuenta();
+                mData[i][1] = listaCuentas.get(i).getTipoCuenta();
+                mData[i][2] = mn[i][0].toString();
+            }
+        }
+        return mData;
+    }
+        private BigDecimal[][] getMontoAbono(){
+            int m = cuenta2.obtnerIdUsuario(user.getUsername());
+            listaCuentas = cuenta2.obtenerCuentasUsuario(m,"Abono");
+            BigDecimal[][] mData = new BigDecimal[listaCuentas.size()][1];
+
+            for (int i = 0; i < mData.length; i++) {
+                if(listaCuentas.get(i).getOperacion().equals("Abono")){
+                    mData[i][0] = listaCuentas.get(i).getSaldo();
+                }
+            }
+            return mData;            
+        }
+        
+        private BigDecimal[][] getMontoCargo(){
+            int m = cuenta2.obtnerIdUsuario(user.getUsername());
+            listaCuentas = cuenta2.obtenerCuentasUsuario(m,"Cargo");
+            BigDecimal[][] mData = new BigDecimal[listaCuentas.size()][1];
+
+            for (int i = 0; i < mData.length; i++) {
+                if(listaCuentas.get(i).getOperacion().equals("Cargo")){
+                    mData[i][0] = listaCuentas.get(i).getSaldo();
+                }
+            }
+            return mData;            
+        }
 }

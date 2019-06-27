@@ -121,7 +121,7 @@ public class EliminarCuenta extends javax.swing.JFrame {
             try{
                 cuenta.setNombreCuenta(txtNombre.getText());
                 int idUsuario = Cuenta.obtnerIdUsuario(user.getUsername());
-                //System.out.println(cuenta.getNombreCuenta()+" "+idUsuario);
+                
                 if(Cuenta.eliminarCuentaUsuario(idUsuario, cuenta)){
                     JOptionPane.showMessageDialog(this,"Se ha eliminado correctamente la cuenta","Success",JOptionPane.INFORMATION_MESSAGE);
                     setVisible(false);

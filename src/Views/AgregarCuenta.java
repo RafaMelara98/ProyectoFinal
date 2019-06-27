@@ -11,7 +11,6 @@ import ENTIDADES.Usuario;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.util.Calendar;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -78,9 +77,11 @@ public class AgregarCuenta extends javax.swing.JFrame {
 
         jLabel4.setText("Operacion: ");
 
-        cbOperacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Abono", "Cargo", " " }));
+        cbOperacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Abono", "Cargo" }));
 
         jLabel5.setText("Monto: ");
+
+        spMonto.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
 
         jLabel6.setText("Descripcion : ");
 
@@ -171,23 +172,21 @@ public class AgregarCuenta extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreCuentaActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        //Date fecha = new Date();
-        int m = cbOperacion.getSelectedIndex();
+        long time = System.currentTimeMillis();
+        int m = cbOperacion.getSelectedIndex() + 1;
         int value = (int) spMonto.getValue();
         if(value < 0 || txtNombreCuenta.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this,"Fields can not be empty","Alert",JOptionPane.WARNING_MESSAGE);
         }else{
             try{
-                
+                Date fecha = new Date(time);
                 cuenta.setNombreCuenta(txtNombreCuenta.getText());
                 cuenta.setTipoCuenta((String) cbTipoCuenta.getSelectedItem());
                 cuenta.setOperacion((String) cbOperacion.getSelectedItem());
                 cuenta.setSaldo(BigDecimal.valueOf(value));
                 cuenta.setDescripcion(txtDescripcion.getText());
-                //cuenta.setFecha(fecha);
-                //System.out.print(cuenta.getFecha());
-                //System.out.print(cuenta.getNombreCuenta() +" "+cuenta.getTipoCuenta()+" "+ cuenta.getOperacion() + " " +cuenta.getSaldo());
-                
+                cuenta.setFecha(fecha);
+
                 int idUsuario = Cuenta.obtnerIdUsuario(user.getUsername());
                 if(Cuenta.agregarCuentasUsuario(idUsuario, cuenta, m)){
                     JOptionPane.showMessageDialog(this,"Se ha agregado correctamente","Exitoso",JOptionPane.INFORMATION_MESSAGE);

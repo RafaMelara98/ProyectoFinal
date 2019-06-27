@@ -86,14 +86,18 @@ public class ConsultaCuentas {
         return actualizo;
     }
     
-    public List<Cuenta> obtenerCuentasUsuario(int idUsuario) {
+    public List<Cuenta> obtenerCuentasUsuario(int idUsuario, String Operacion) {
         Connection c = con.getConnection();
         List<Cuenta> listaCuenta = new ArrayList();
-        String query = "";
+        String query = "SELECT cuenta.nombre, cuenta.descripcion, movimiento.monto, operacion.nombre AS operacion\n" +
+                        "FROM cuenta, movimiento, operacion, usuario\n" +
+                        "WHERE cuenta.idCuenta = movimiento.idCuenta AND operacion.idOperacion = movimiento.idOperacion \n" +
+                        "AND usuario.idUsuario = movimiento.idUsuario AND usuario.idUsuario = ? AND operacion.nombre = ?;";
         
         try{
             PreparedStatement ps = c.prepareStatement(query);
             ps.setInt(1, idUsuario);
+            ps.setString(2,Operacion);
             ResultSet rs = ps.executeQuery();
             
             while (rs.next()){
