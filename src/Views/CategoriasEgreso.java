@@ -19,14 +19,15 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class CategoriasEgreso extends javax.swing.JFrame {
 
-    
+    private Usuario user;
     JFrame window;
     /**
      * Creates new form Categorias
      */
-    public CategoriasEgreso(JFrame window) {
+    public CategoriasEgreso(JFrame window,Usuario user) {
         initComponents();
         this.window = window;
+        this.user = user;
     }
     
     
@@ -252,7 +253,7 @@ public class CategoriasEgreso extends javax.swing.JFrame {
         
        String subcategoria = jcomboSubCategorias.getSelectedItem().toString();
        String categoria = jcomboCategorias.getSelectedItem().toString();
-       Egresos egresos = new Egresos();
+       Egresos egresos = new Egresos(user);
        egresos.setVisible(true);
        
        Egresos.txtCategoria.setText(categoria + "-" + subcategoria);

@@ -27,10 +27,12 @@ public class Ingresos extends javax.swing.JFrame {
 
     User userDao;
     JFrame window;
+    private Usuario user;
      
-    public Ingresos() {
+    public Ingresos(Usuario user) {
         initComponents();
         userDao = new User();
+        this.user = user;
     }
 
     /**
@@ -186,20 +188,20 @@ public class Ingresos extends javax.swing.JFrame {
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        Movimientos movimientos = new Movimientos(this);
+        Movimientos movimientos = new Movimientos(this,user);
         movimientos.setVisible(true);
     }//GEN-LAST:event_CancelActionPerformed
 
     private void OpcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        CategoriasIngreso categorias = new CategoriasIngreso(this);
+        CategoriasIngreso categorias = new CategoriasIngreso(this,user);
         categorias.setVisible(true);
     }//GEN-LAST:event_OpcionActionPerformed
 
     private void txtCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCategoriaActionPerformed
         // TODO add your handling code here:
-        CategoriasIngreso categorias = new CategoriasIngreso(this);
+        CategoriasIngreso categorias = new CategoriasIngreso(this,user);
     }//GEN-LAST:event_txtCategoriaActionPerformed
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed

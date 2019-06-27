@@ -21,12 +21,14 @@ public class CategoriasIngreso extends javax.swing.JFrame {
 
     
     JFrame window;
+    private Usuario user;
     /**
      * Creates new form Categorias
      */
-    public CategoriasIngreso(JFrame window) {
+    public CategoriasIngreso(JFrame window, Usuario user) {
         initComponents();
         this.window = window;
+        this.user = user;
     }
     
     
@@ -252,7 +254,7 @@ public class CategoriasIngreso extends javax.swing.JFrame {
         
        String subcategoria = jcomboSubCategorias.getSelectedItem().toString();
        String categoria = jcomboCategorias.getSelectedItem().toString();
-       Ingresos ingresos = new Ingresos();
+       Ingresos ingresos = new Ingresos(user);
        ingresos.setVisible(true);
        
        Ingresos.txtCategoria.setText(categoria + "-" + subcategoria);

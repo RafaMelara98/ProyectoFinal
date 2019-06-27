@@ -32,11 +32,12 @@ public class Movimientos extends javax.swing.JFrame {
     private List<Usuario> users;
     private Movimientos me;
     private JFrame window;
+    private Usuario user;
 
-     public Movimientos(JFrame window) {
+     public Movimientos(JFrame window,Usuario user) {
         initComponents();
         me = this;
-        //this.user = user;
+        this.user = user;
         this.window=window;
        
         
@@ -157,14 +158,14 @@ public class Movimientos extends javax.swing.JFrame {
     private void IngresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresosActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        Ingresos ingresos = new Ingresos();
+        Ingresos ingresos = new Ingresos(user);
         ingresos.setVisible(true);
     }//GEN-LAST:event_IngresosActionPerformed
 
     private void EgresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EgresosActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        Egresos egresos = new Egresos();
+        Egresos egresos = new Egresos(user);
         egresos.setVisible(true);
     }//GEN-LAST:event_EgresosActionPerformed
 

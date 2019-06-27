@@ -15,6 +15,8 @@ import java.awt.event.MouseListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -26,11 +28,15 @@ import javax.swing.table.DefaultTableModel;
 public class Egresos extends javax.swing.JFrame {
 
     User userDao;
-    JFrame window;
+    private JFrame window;
+    private Usuario user;
      
-    public Egresos() {
+    public Egresos(Usuario user) {
         initComponents();
         userDao = new User();
+        this.user = user;
+        this.window = this;
+       
     }
 
     /**
@@ -98,6 +104,11 @@ public class Egresos extends javax.swing.JFrame {
         });
 
         jButton1.setText("...");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Fecha:");
 
@@ -182,20 +193,20 @@ public class Egresos extends javax.swing.JFrame {
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        Movimientos movimientos = new Movimientos(this);
+        Movimientos movimientos = new Movimientos(this,user);
         movimientos.setVisible(true);
     }//GEN-LAST:event_CancelActionPerformed
 
     private void OpcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        CategoriasEgreso categorias = new CategoriasEgreso(this);
+        CategoriasEgreso categorias = new CategoriasEgreso(this,user);
         categorias.setVisible(true);
     }//GEN-LAST:event_OpcionActionPerformed
 
     private void txtCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCategoriaActionPerformed
         // TODO add your handling code here:
-        CategoriasEgreso categorias = new CategoriasEgreso(this);
+        CategoriasEgreso categorias = new CategoriasEgreso(this,user);
     }//GEN-LAST:event_txtCategoriaActionPerformed
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
@@ -216,6 +227,17 @@ public class Egresos extends javax.swing.JFrame {
         }
          */
     }//GEN-LAST:event_SaveActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            // TODO add your handling code here:
+            Cuentas cuenta = new Cuentas(window,user);
+            this.setVisible(false);
+            cuenta.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Egresos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

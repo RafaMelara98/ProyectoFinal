@@ -163,7 +163,7 @@ public class Login extends javax.swing.JFrame {
         try{
             Usuario user = userDao.Login(txtUsername.getText(), new String(txtPassword.getPassword()));
             if(user !=null){
-                Movimientos dashboard = new Movimientos(this);
+                Movimientos dashboard = new Movimientos(this,user);
                 setVisible(false);
                 dashboard.setVisible(true);
             }else{
