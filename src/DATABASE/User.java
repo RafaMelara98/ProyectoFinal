@@ -182,6 +182,24 @@ public class User {
         }
         return id;
     } 
+    
+    public boolean cambiarContraseña(Usuario user){
+        Connection conn = bd.getConnection();
+        boolean update = false;
+        String query = "UPDATE USUARIO SET contraseña = ? WHERE Usuario.usuario = ?;";
+        
+        try{
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, user.getPassword());
+            ps.setString(2, user.getUsername());
+            
+            if(ps.executeUpdate() != 0)
+                update = true;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return update;
+    }
   
     /*public List<Usuario> getAllMovimientos(){
         Connection conn = bd.getConnection();
