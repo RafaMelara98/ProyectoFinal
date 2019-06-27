@@ -26,6 +26,8 @@ public class EliminarCuenta extends javax.swing.JFrame {
      */
     public EliminarCuenta(JFrame window,Usuario user) {
         initComponents();
+        this.setLocationRelativeTo(EliminarCuenta.this);
+        this.setResizable(false);        
         this.user = user;
         this.window = window;
         Cuenta = new ConsultaCuentas();

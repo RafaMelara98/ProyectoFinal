@@ -30,6 +30,9 @@ public class Cuentas extends javax.swing.JFrame {
      */
     public Cuentas(Usuario user) throws SQLException {
         initComponents();
+        this.setLocationRelativeTo(Cuentas.this);
+        this.setResizable(false);
+        this.setTitle("Cuentas");
         this.window = this;
         this.user = user;
         cuenta2 = new ConsultaCuentas();
@@ -46,8 +49,6 @@ public class Cuentas extends javax.swing.JFrame {
         DefaultTableModel model2 = new DefaultTableModel(dataCargo,headers);
         tbAbono.setModel(model);
         tbCargo.setModel(model2);
-        
-        
     }
 
     /**

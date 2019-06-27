@@ -27,6 +27,8 @@ public class ActualizarCuenta extends javax.swing.JFrame {
      */
     public ActualizarCuenta(JFrame window) {
         initComponents();
+        this.setLocationRelativeTo(ActualizarCuenta.this);
+        this.setResizable(false);
         cuenta = new Cuenta();
         Cuenta = new ConsultaCuentas();
         this.window = window;

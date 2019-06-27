@@ -28,6 +28,8 @@ public class AgregarCuenta extends javax.swing.JFrame {
      */
     public AgregarCuenta(JFrame window, Usuario user) {
         initComponents();
+        this.setLocationRelativeTo(AgregarCuenta.this);
+        this.setResizable(false);
         this.window = window;
         this.user = user;
         Cuenta = new ConsultaCuentas();
