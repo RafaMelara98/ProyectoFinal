@@ -184,16 +184,22 @@ public class AgregarCuenta extends javax.swing.JFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         long time = System.currentTimeMillis();
         int m = cbOperacion.getSelectedIndex() + 1;
-        double value = (double) spMonto.getValue();
-        if(value < 0 || txtNombreCuenta.getText().isEmpty()) {
+        
+        if(txtNombreCuenta.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this,"Fields can not be empty","Alert",JOptionPane.WARNING_MESSAGE);
         }else{
             try{
+                if(cbOperacion.getSelectedItem().equals("Cargo")){
+                    double value = (double) spMonto.getValue() * (-1);
+                    cuenta.setSaldo(BigDecimal.valueOf(value));
+                }else{
+                    double value = (double) spMonto.getValue();
+                    cuenta.setSaldo(BigDecimal.valueOf(value));
+                }
                 Date fecha = new Date(time);
                 cuenta.setNombreCuenta(txtNombreCuenta.getText());
                 cuenta.setTipoCuenta((String) cbTipoCuenta.getSelectedItem());
                 cuenta.setOperacion((String) cbOperacion.getSelectedItem());
-                cuenta.setSaldo(BigDecimal.valueOf(value));
                 cuenta.setDescripcion(txtDescripcion.getText());
                 cuenta.setFecha(fecha);
 
