@@ -22,8 +22,7 @@ public class BacPOO {
         
         Login login = new Login();
         login.setVisible(true);
-        //ALV ESTA COSA NO DEJA SUBIR SI EL ADMIN MODIFICA A CADA RATO :V
-        //PTO EL QUE LO BORRE
+        
     }
     
 }
